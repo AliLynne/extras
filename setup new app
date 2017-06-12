@@ -1,0 +1,47 @@
+Setting up a project
+
+1. Start vagrant
+2. Create application using postgres
+  $ rails new appname --database=postgresql
+3. Adjust database.yml
+default: &default
+adapter: postgresql
+encoding: unicode
+pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+username: postgres
+password: password
+host: localhost
+
+development:
+<<: *default
+database: splurty_development
+
+test:
+<<: *default
+database: splurty_test
+
+production:
+<<: *default
+database: splurty_production
+# username: splurty
+# password: <%= ENV['SPLURTY_DATABASE_PASSWORD'] %>
+
+4. Create initial database
+  - cd to app folder
+  - enter - rake db:create
+5. Start server
+  rails server -b 0.0.0.0 -p 3000
+6. In new terminal window Initialize git
+$ git init
+$ git add --all
+$ git commit -am "initial commit"
+7. Set up github using ssh & push
+8. Deploy to Heroku
+ - heroku create appname-firstname-lastname
+ - git push heroku master
+9. build controller
+  rails generate controller name
+  add - root 'name#index' to routes.rb
+  add - def index end to application controller
+  in app/views/appname create index.html.erb
+  
