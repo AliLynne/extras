@@ -11,26 +11,17 @@ class Image
     end
   end
 
-  def getPixel(x,y)
-    @image[x][y]
-  end
 
-  def changePixel(x,y)
-    @image[x][y] = 1
-  end
 
 
 #should loop through @image and find all of the ones
 #and blur around them in x
 
-  def blur
-    #blurred = Image.new(@image)
-
-
-    l = @image.length
-    li = @image[1].length
-    puts "#{l} and #{li}"
-
+  def blur(row_index,col_index)
+    @image[row_index-1][col_index] = 1
+    @image[row_index][col_index-1] = 1
+    @image[row_index+1][col_index] = 1
+    @image[row_index][col_index+1] = 1
   end
 end
 
@@ -45,5 +36,6 @@ image = Image.new([
 
 
 
+
+#image.blur
 image.output_image
-image.blur
