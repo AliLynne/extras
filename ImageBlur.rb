@@ -1,38 +1,39 @@
 class Image
-  attr_accessor :array
 
-  def initialize(array)
-    @array = array
+
+  def initialize(image)
+    @image = image
   end
 
   def output_image
-    @array.each do |x|
+    @image.each do |x|
       puts x.join
     end
   end
 
-  def blur
-    array.each_index do |i|
-      subarray = array[i]
-      subarray.each_index do |x|
-          if array[i][x] == 1
-            array[i-1][x] = 1
-            array[i+1][x] = 1
-            array[i][x-1] = 1
-            array[i][x+1] = 1
-            array.each do |a|
-              puts a.join
-            end
-          end
-
-      end
-    end
-    array.each do |a|
-      puts a.join
-    end
+  def getPixel(x,y)
+    @image[x][y]
   end
 
+  def changePixel(x,y)
+    @image[x][y] = 1
+  end
+
+
+#should loop through @image and find all of the ones
+#and blur around them in x
+
+  def blur
+    #blurred = Image.new(@image)
+
+
+    l = @image.length
+    li = @image[1].length
+    puts "#{l} and #{li}"
+
+  end
 end
+
 
 
 image = Image.new([
@@ -43,4 +44,6 @@ image = Image.new([
 ])
 
 
+
+image.output_image
 image.blur

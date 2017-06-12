@@ -1,14 +1,8 @@
-# This is an irregular 2D array (a jagged array).
-values = [["A", "B", "C"], ["D", "E", "F"], ["G", "H"]]
+array = [[0, 0, 0, 0],
+[0, 1, 0, 0],
+[0, 0, 0, 0],
+[0, 0, 0, 0]]
 
-# Loop over indexes.
-values.each_index do |i|
 
-    # Get subarray and loop over its indexes also.
-    subarray = values[i]
-    subarray.each_index do |x|
-        # Display the cell.
-        puts String(i) << " " << String(x) << "... " << values[i][x]
-    end
-
-end
+puts array.collect{ |a| a.collect{ |b| b + 1} }
+puts array
